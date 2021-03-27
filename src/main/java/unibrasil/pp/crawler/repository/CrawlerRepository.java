@@ -1,7 +1,12 @@
 package unibrasil.pp.crawler.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import unibrasil.pp.crawler.model.Crawler;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import unibrasil.pp.crawler.model.WebCrawlerModel;
 
-public interface CrawlerRepository  extends PagingAndSortingRepository<Crawler, Long> {
+import java.util.List;
+
+@Repository
+public interface CrawlerRepository extends JpaRepository<WebCrawlerModel, Long> {
+    List<WebCrawlerModel> findAll();
 }
