@@ -14,6 +14,6 @@ spring:
   jmx:
     enable: false
   datasource:
-    url: jdbc:mysql://localhost:3306/unibrasilpp?allowPublicKeyRetrieval=true&sslMode=DISABLED
+    url: jdbc:mysql://localhost:3306/microservice_schema?allowPublicKeyRetrieval=true&sslMode=DISABLED
     username: root
-    password: unibrasilpp
+    password: MySzK@138
