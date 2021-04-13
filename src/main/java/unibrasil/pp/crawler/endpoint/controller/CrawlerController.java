@@ -29,12 +29,8 @@ public class CrawlerController {
 
     /*@GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)*/
     @RequestMapping(method = RequestMethod.POST, value="/save")
-<<<<<<< HEAD
-    @CrossOrigin
-    public List<WebCrawlerModel> addData() throws IOException {
-=======
     public List<WebCrawlerModel> addData() throws IOException, InterruptedException {
->>>>>>> e67d828bed3cfbe9dd15d42e8a046baf2a785f77
+        String t = "Repetição numero";
         Document doc = Jsoup.connect("https://brasil.io/covid19/PR/").timeout(6000).get();
         Elements tabela = doc.select("tbody");
         List<WebCrawlerModel> listCrawler = new ArrayList<>();
@@ -44,7 +40,7 @@ public class CrawlerController {
 				for(int i = 0; i < repeticoes;i++){
 					SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-YYYY 'as' HH:mm:ss z");
 					Date date = new Date(System.currentTimeMillis());
-					System.out.println("Repetição numero " + i + " de " + (repeticoes+1) + " começando no dia " + formatter.format(date));
+					System.out.println(t  + i + " de " + (repeticoes+1) + " começando no dia " + formatter.format(date));
 					for (Element e : tabela.select("tr")) {
             final WebCrawlerModel webCrawlerModel = new WebCrawlerModel();
             String data = e.select("td").attr("data-search");
@@ -79,9 +75,9 @@ public class CrawlerController {
             listCrawler.add(webCrawlerModel);
         }
 				date = new Date(System.currentTimeMillis());
-				System.out.println("Repetição numero " + i + " de " + (repeticoes+1) + ". Finalizada no dia " + formatter.format(date));
+				System.out.println(t + i + " de " + (repeticoes+1) + ". Finalizada no dia " + formatter.format(date));
 				date = new Date(System.currentTimeMillis());
-				System.out.println("Repetição numero " + i + " de " + (repeticoes+1) + ". A próxima atualização é em " + horas + " horas." + formatter.format(date));
+				System.out.println(t + i + " de " + (repeticoes+1) + ". A próxima atualização é em " + horas + " horas." + formatter.format(date));
 				TimeUnit.HOURS.sleep(horas);
 			}
 			SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-YYYY 'as' HH:mm:ss z");
